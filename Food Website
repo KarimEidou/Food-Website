@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ffe6e6;
+        background-image: url('your-image-url-here');
+        background-size: cover;
+      }
+      .welcome {
+        font-size: 36px;
+        font-family: "Lucida Handwriting", cursive;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .line {
+        width: 50%;
+        margin: 20px auto;
+        border-bottom: 3px dashed #aaa;
+      }
+      .food-list {
+        list-style: none;
+        margin: 40px 0 0 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+      .food-list-column {
+        margin: 0 40px; 
+        padding: 0;
+      }
+      .food-list-column:last-child {
+        border-right: none;
+      }
+      .food-list-item {
+        font-size: 24px;
+        font-family: "Brush Script MT", cursive; 
+        margin: 10px
+        0 20px 0; 
+        color: black; 
+        text-align: center; 
+      }
+      .order-button,
+      input[type="checkbox"] {
+        border-radius: 10px; 
+      }
+      .order-button {
+        display: block; 
+        margin: 20px auto; 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="welcome">
+      Welcome
+    </div>
+    <div class="line"></div>
+    <ul class="food-list">
+      <li class="food-list-column">
+        <div class="food-list-item">
+          <input type="checkbox">1. Pizza - $10
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">2. Burger - $8
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">3. Fried<br>Chicken - $12
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div> 
+        <div class="food-list-item">
+          <input type="checkbox">4. Tacos - $6
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">5. Spaghetti - $9
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </li>
+      <li class="food-list-column">
+        <div class="food-list-item">
+          <input type="checkbox">6. Steak - $15
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">7. Sushi - $18
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">8. Curry - $10
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">9. Salad - $7
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="food-list-item">
+          <input type="checkbox">10. Sandwich - $6
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select> 
+        </div> 
+      </li> 
+    </ul> 
+    <button class="order-button">Place Order</button> 
+    <script> 
+      document.querySelector(".order-button").addEventListener("click", function () { 
+        // Get selected food items 
+        var selectedFoodItems = Array.from( 
+          document.querySelectorAll(".food-list-item input[type='checkbox']:checked") 
+        ).map(function (checkbox) { 
+          return checkbox.parentNode.textContent.trim(); 
+        }); 
+
+        // Check if no food items are selected 
+        if (selectedFoodItems.length === 0) { 
+          // Create "no order" box 
+          var noOrderBox = document.createElement("div"); 
+          noOrderBox.innerHTML = "Please select at least one food item before placing your order."; 
+          noOrderBox.style.position = "fixed"; 
+          noOrderBox.style.top = "50%"; 
+          noOrderBox.style.left = "50%"; 
+          noOrderBox.style.transform = "translate(-50%, -50%)"; 
+          noOrderBox.style.padding = "40px"; 
+          noOrderBox.style.backgroundColor = "#eee"; 
+          noOrderBox.style.borderRadius = "10px"; 
+          document.body.appendChild(noOrderBox); 
+
+          // Remove "no order" box after 3 seconds 
+          setTimeout(function () { 
+            document.body.removeChild(noOrderBox);          }, 3000); 
+        } else { 
+          // Calculate total price 
+          var totalPrice = selectedFoodItems.reduce(function (total, foodItem) { 
+            var price = parseFloat(foodItem.split("$")[1]); 
+            return total + price; 
+          }, 0); 
+
+          // Create order complete box 
+          var orderCompleteBox = document.createElement("div"); 
+          orderCompleteBox.innerHTML = 
+            "Order Complete<hr>" + 
+            selectedFoodItems.join("<br>") + 
+            "<br>Total: $" + 
+            totalPrice.toFixed(2); 
+          orderCompleteBox.style.position = "fixed"; 
+          orderCompleteBox.style.top = "50%"; 
+          orderCompleteBox.style.left = "50%"; 
+          orderCompleteBox.style.transform = "translate(-50%, -50%)"; 
+          orderCompleteBox.style.padding = "40px"; 
+          orderCompleteBox.style.backgroundColor = "#eee"; 
+          orderCompleteBox.style.borderRadius = "10px"; 
+          document.body.appendChild(orderCompleteBox); 
+
+          // Remove order complete box after 4 seconds 
+          setTimeout(function () { 
+            document.body.removeChild(orderCompleteBox); 
+          }, 4000); 
+        } 
+      }); 
+    </script> 
+  </body> 
+</html>
